@@ -9,11 +9,10 @@ import lombok.Setter;
 @Setter
 public class OrderDTO {
 
-    private Long orderId;
     private String description;
     private int quantity;
     private int value;
-    private Customer customer;
+    private Long customerId;
 
 }
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/order")
+@RequestMapping("api/v1/")
 @Slf4j
 public class CustomerController {
 
@@ -34,7 +34,6 @@ public class CustomerController {
     @PostMapping("/customer")
     public ResponseEntity<Customer> createCustomer(@RequestBody CustomerDTO customerRequest) {
         log.info("Request received to create Customer");
-
         return new ResponseEntity<>(customerService.createCustomer(customerRequest), HttpStatus.CREATED);
     }
 
@@ -45,7 +44,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("id") Long id) {
         log.info("Request received to get Customer by id");
         return new ResponseEntity<>(customerService.getCustomerById(id), HttpStatus.OK);
     }

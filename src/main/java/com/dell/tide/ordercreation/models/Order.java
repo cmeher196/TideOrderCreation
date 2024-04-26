@@ -1,6 +1,7 @@
 package com.dell.tide.ordercreation.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,8 +18,9 @@ public class Order {
     private int quantity;
     private int value;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "pnp_customer_id")
+    @JsonBackReference
     private Customer customer;
 
 
